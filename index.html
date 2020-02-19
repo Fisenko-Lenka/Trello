@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="ru" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/foundation.min.css">
+  <link rel="stylesheet" href="css/board.css">
+</head>
+<body ng-cloak>
+  <header>
+    <div class='row'>
+      <a href="index.html"><img src="img/logo.png" alt="Вернуться" width="50px"></a>
+      <h1 class='app-name left'>My boards</h1>
+    </div>
+  </header>
+
+  <section id="lists-container"
+           class="lists-container"
+           ng-controller="boardCtrl as boardCtrl">
+           
+           <div class="new-board">
+        <details>
+          <summary class="spoiler">Новая доска</summary>
+             <section class="list new-list list-inline"> 
+          <h2>Название доски</h2>
+          <input type="text" ng-model="boardCtrl.boardName"  placeholder="Имя нового списка">
+          <form ng-submit="boardCtrl.addBoard()">
+            <button class="reset" type="reset">Очистить</button><button>Сохранить</button>
+          </form>
+        </section>
+      </details>
+      </div>      
+
+    <div class="row">
+      <section class="list list-inline"
+               ng-repeat="board in boardCtrl.boards"
+               ng-controller="boardsCtrl as boardsCtrl">
+        
+          <a ng-click="boardsCtrl.removeBoards(board)" class="hand">
+             <div class="remove remove-list"></div>
+          </a>
+         <div class="boards"><h1><a href="my_board.html">{{board.boardName}}</a></h1>
+         </div>
+
+      </section>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/factories/boardFactory.js"></script>
+  <script src="js/controllers/boardCtrl.js"></script>
+  <script src="js/controllers/boardsCtrl.js"></script>
+  <script src="js/myFunction.js"></script>
+
+</body>
+</html>
